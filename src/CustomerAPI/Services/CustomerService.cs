@@ -8,7 +8,7 @@ namespace CustomerAPI.Services
     {
         public async Task<Customer> AddAsync(Customer customer, CancellationToken cancellationToken)
         {
-            await context.AddAsync(customer);
+            context.Add(customer);
 
             await context.SaveChangesAsync(cancellationToken);
 

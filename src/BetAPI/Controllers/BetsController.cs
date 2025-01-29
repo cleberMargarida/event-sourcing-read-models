@@ -27,7 +27,7 @@ namespace BetAPI.Controllers
         }
 
         [HttpPost("result/{id}")]
-        public async Task<IActionResult> ResultBet(long id, bool win, CancellationToken cancellationToken)
+        public async Task<IActionResult> ResultBet(Guid id, [FromQuery] bool win, CancellationToken cancellationToken)
         {
             var bet = await service.FindAsync(id);
 
@@ -42,7 +42,7 @@ namespace BetAPI.Controllers
         }
 
         [HttpPost("settle/{id}")]
-        public async Task<IActionResult> SettleBet(long id, CancellationToken cancellationToken)
+        public async Task<IActionResult> SettleBet(Guid id, CancellationToken cancellationToken)
         {
             var bet = await service.FindAsync(id);
 

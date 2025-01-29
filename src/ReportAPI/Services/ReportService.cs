@@ -30,7 +30,10 @@ namespace ReportAPI.Services
 
         public async Task<CustomerPnlReport?> GetCustomerPnlAsync(Guid customerId, CancellationToken cancellationToken)
         {
-            return await context.CustomerPnlReportData.LastOrDefaultAsync(r => r.CustomerId == customerId, cancellationToken);
+            return await context.CustomerPnlReportData
+                .Where(r => r.CustomerId == customerId)
+                .OrderBy(r => r.Timestamp)
+                .LastOrDefaultAsync(cancellationToken);
         }
 
         public async Task<IReadOnlyCollection<CustomerPnlReport>> GetCustomerPnlAsync(CancellationToken cancellationToken)

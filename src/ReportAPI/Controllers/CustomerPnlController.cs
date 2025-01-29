@@ -17,12 +17,12 @@ namespace ReportAPI.Controllers
             return Ok(reports);
         }
         
-        [HttpGet("/{userId}")]
+        [HttpGet("{userId}")]
         public async Task<IActionResult> GetCustomerPnl(Guid userId, CancellationToken cancellationToken)
         {
-            var reports = await reportService.GetCustomerPnlAsync(userId, cancellationToken);
+            var report = await reportService.GetCustomerPnlAsync(userId, cancellationToken);
 
-            return Ok(reports);
+            return Ok(report);
         }
     }
 }

@@ -44,6 +44,7 @@ namespace ReportAPI.Models
         public CustomerPnlReport Recalculate(Bet bet)
         {
             var other = (CustomerPnlReport)MemberwiseClone();
+            other.Id = Guid.NewGuid();
 
             if (bet.Win)
             {
@@ -56,7 +57,7 @@ namespace ReportAPI.Models
                 other.TotalLosses++;
             }
 
-            other.NetProfit = TotalProfit - TotalLoss;
+            other.NetProfit = other.TotalProfit - other.TotalLoss;
             other.TotalBets++;
             other.Timestamp = bet.Timestamp;
 

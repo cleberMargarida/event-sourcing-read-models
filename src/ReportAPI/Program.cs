@@ -1,8 +1,8 @@
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
+using ReportAPI.Consumers;
 using ReportAPI.Data;
 using ReportAPI.Services;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +14,12 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IReportService, ReportService>();
 
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddMassTransit(x =>
 {
-    x.AddConsumers(Assembly.GetExecutingAssembly());
+    x.AddConsumer<CustomerCreatedConsumer>();
+    x.AddConsumer<BetSettledConsumer>(x => x.ConcurrentMessageLimit = 1);
 
     x.UsingRabbitMq((context, cfg) =>
     {
@@ -36,6 +39,9 @@ var app = builder.Build();
 app.MapDefaultEndpoints();
 
 app.MapControllers();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 await app.SeedDataAsync<ReportContext>();
 

@@ -6,7 +6,7 @@ namespace BetAPI.Services
 {
     public class BetService(BetContext context) : IBetService
     {
-        public async Task<Bet?> FindAsync(long id)
+        public async Task<Bet?> FindAsync(Guid id)
         {
             return await context.Bets.FindAsync(id);
         }
@@ -18,21 +18,11 @@ namespace BetAPI.Services
 
         public async Task<Bet> AddAsync(Bet bet, CancellationToken cancellationToken)
         {
-            try
-            {
+            context.Add(bet);
 
-                context.Add(bet);
+            await context.SaveChangesAsync(cancellationToken);
 
-                await context.SaveChangesAsync(cancellationToken);
-
-                return bet;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
+            return bet;
         }
 
         public async Task ResultBetAsync(Bet bet, bool win, CancellationToken cancellationToken)

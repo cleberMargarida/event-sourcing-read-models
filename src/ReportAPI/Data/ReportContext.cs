@@ -25,6 +25,9 @@ namespace ReportAPI.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<CustomerPnlReport>().HasIndex(x => x.Timestamp);
+            modelBuilder.Entity<CustomerPnlReport>().HasIndex(x => x.Username);
+
             modelBuilder.AddInboxStateEntity();
             modelBuilder.AddOutboxMessageEntity();
             modelBuilder.AddOutboxStateEntity();

@@ -7,7 +7,7 @@ namespace Application.FunctionalTests.Clients
     {
         public async Task<Bet> PlaceBetAsync(Guid customerId, BetType betTypeId, int maxReturns, int totalOdds, int totalStake, bool inPlay)
         {
-            var bet = new Bet(Guid.Empty, customerId, false, false, betTypeId, maxReturns, totalOdds, totalStake, inPlay, default);
+            var bet = new Bet(Guid.Empty, customerId, false, false, betTypeId, totalStake, maxReturns, totalOdds, inPlay, default);
             var response = await http.PostAsJsonAsync("/bets", bet);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<Bet>();
