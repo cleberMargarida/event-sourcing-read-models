@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ReportAPI.Consumers;
 using ReportAPI.Data;
 using ReportAPI.Services;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +19,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMassTransit(x =>
 {
-    x.AddConsumer<CustomerCreatedConsumer>();
-    x.AddConsumer<BetSettledConsumer>(x => x.ConcurrentMessageLimit = 1);
+    x.AddConsumers(Assembly.GetExecutingAssembly());
 
     x.UsingRabbitMq((context, cfg) =>
     {
