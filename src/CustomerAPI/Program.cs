@@ -20,12 +20,6 @@ builder.Services.AddMassTransit(x =>
         cfg.Host(builder.Configuration.GetConnectionString("rabbitmq"));
         cfg.ConfigureEndpoints(context);
     });
-
-    x.AddEntityFrameworkOutbox<CustomerContext>(o =>
-    {
-        o.UseSqlServer();
-        o.UseBusOutbox();
-    });
 });
 
 var app = builder.Build();

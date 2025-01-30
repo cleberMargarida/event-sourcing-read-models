@@ -11,24 +11,14 @@ namespace CustomerAPI.Data
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            var events = ChangeTracker
-                .Entries<IEventSourcing>()
-                .SelectMany(x => x.Entity.Events)
-                .OfType<object>();
+            var events = ChangeTracker.Entries<IEventSourcing>()
+                                      .SelectMany(x => x.Entity.Events)
+                                      .OfType<object>();
 
             var publisher = services.GetRequiredService<IBus>();
             await publisher.PublishBatch(events, cancellationToken);
 
             return await base.SaveChangesAsync(cancellationToken);
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            modelBuilder.AddInboxStateEntity();
-            modelBuilder.AddOutboxMessageEntity();
-            modelBuilder.AddOutboxStateEntity();
         }
     }
 }
