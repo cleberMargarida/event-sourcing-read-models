@@ -19,7 +19,10 @@ builder.Services.AddScoped<IReportService, ReportService>();
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddHostedService<ReplayDataService>();
+if (args.Contains("--replay"))
+{
+    builder.Services.AddHostedService<ReplayDataService>();
+}
 
 builder.Services.AddMassTransit(x =>
 {
