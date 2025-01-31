@@ -114,11 +114,4 @@ public static class Extensions
         return app;
     }
 
-    public static async Task SeedDataAsync<TDbContext>(this WebApplication app)
-        where TDbContext : DbContext
-    {
-        using var scope = app.Services.CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<TDbContext>();
-        await dbContext.Database.EnsureCreatedAsync();
-    }
 }

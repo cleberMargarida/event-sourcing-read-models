@@ -37,6 +37,4 @@ app.MapControllers();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-await app.SeedDataAsync<ReportContext>();
-
 app.Run();

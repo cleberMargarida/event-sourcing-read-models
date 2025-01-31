@@ -28,6 +28,4 @@ app.MapDefaultEndpoints();
 
 app.MapControllers();
 
-await app.SeedDataAsync<CustomerContext>();
-
 app.Run();

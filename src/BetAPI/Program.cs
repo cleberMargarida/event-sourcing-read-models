@@ -34,6 +34,4 @@ app.MapDefaultEndpoints();
 
 app.MapControllers();
 
-await app.SeedDataAsync<BetContext>();
-
 app.Run();
