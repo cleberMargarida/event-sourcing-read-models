@@ -39,18 +39,18 @@ namespace ReportAPI.Services
 
         private async Task ReplayEventsForCustomer(Guid customerId, CancellationToken stoppingToken)
         {
-            var stream = _eventStore.ReadStreamAsync(Direction.Forwards, customerId.ToString(), StreamPosition.Start, cancellationToken: stoppingToken)
+            var stream = _eventStore.ReadStreamAsync(Direction.Forwards, customerId.ToString(), StreamPosition.Start, cancellationToken: stoppingToken);
             await foreach (var @event in stream)
             {
                 if (@event.Event.EventType is "CustomerCreatedEvent")
                 {
-                    var @event = JsonSerializer.Deserialize<CustomerCreatedEvent>(@event.Event.Data.Span);
-                    await _reportService.GenerateReportAsync(@event!.Customer, stoppingToken);
+                    var customerCreatedEvent = JsonSerializer.Deserialize<CustomerCreatedEvent>(@event.Event.Data.Span);
+                    await _reportService.GenerateReportAsync(customerCreatedEvent!.Customer, stoppingToken);
                 }
                 else if (@event.Event.EventType is "BetSettledEvent")
                 {
-                    var @event = JsonSerializer.Deserialize<BetSettledEvent>(@event.Event.Data.Span);
-                    await _reportService.GenerateReportAsync(@event!.Bet, stoppingToken);
+                    var betSettledEvent = JsonSerializer.Deserialize<BetSettledEvent>(@event.Event.Data.Span);
+                    await _reportService.GenerateReportAsync(betSettledEvent!.Bet, stoppingToken);
                 }
             }
         }
