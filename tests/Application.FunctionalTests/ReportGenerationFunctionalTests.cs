@@ -13,7 +13,7 @@ namespace Application.FunctionalTests
             // Arrange
             Customer customer = await fixture.CustomerApi.CreateCustomerAsync(username: "c.margarida", firstName: "Cleber", lastName: "Margarida");
 
-            Bet firstBet = await fixture.BetApi.PlaceBetAsync(customer.Id, betTypeId: BetType.Single, maxReturns: 100, totalOdds: 2, totalStake: 50, inPlay: true).WithDelay(1000);
+            Bet firstBet = await fixture.BetApi.PlaceBetAsync(customer.Id, betTypeId: BetType.Single, maxReturns: 100, totalOdds: 2, totalStake: 50, inPlay: true).WithDelay(5000);
             await fixture.BetApi.ResultBetAsync(id: firstBet.Id, win: true);
             await fixture.BetApi.SettleBetAsync(id: firstBet.Id);
 

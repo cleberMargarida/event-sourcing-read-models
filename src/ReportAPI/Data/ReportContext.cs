@@ -8,6 +8,7 @@ namespace ReportAPI.Data
     public class ReportContext(IServiceProvider services, DbContextOptions<ReportContext> options) : DbContext(options)
     {
         public DbSet<CustomerPnlReport> CustomerPnlReportData { get; set; } = default!;
+        public DbSet<CustomerSingleBetsPnlReport> CustomerSingleBetsPnlReportData { get; set; } = default!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -26,7 +27,12 @@ namespace ReportAPI.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<CustomerPnlReport>().HasIndex(x => x.Timestamp);
+            modelBuilder.Entity<CustomerPnlReport>().HasIndex(x => x.CustomerId);
             modelBuilder.Entity<CustomerPnlReport>().HasIndex(x => x.Username);
+
+            modelBuilder.Entity<CustomerSingleBetsPnlReport>().HasIndex(x => x.Timestamp);
+            modelBuilder.Entity<CustomerSingleBetsPnlReport>().HasIndex(x => x.CustomerId);
+            modelBuilder.Entity<CustomerSingleBetsPnlReport>().HasIndex(x => x.Username);
         }
     }
 }
