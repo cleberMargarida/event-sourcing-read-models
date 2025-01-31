@@ -5,6 +5,12 @@ namespace Application.FunctionalTests.Clients
 {
     public class BetApiClient(HttpClient http)
     {
+        public async Task<bool> CheckHealthAsync()
+        {
+            var response = await http.GetAsync("/health");
+            return response.IsSuccessStatusCode;
+        }
+
         public async Task<Bet> PlaceBetAsync(Guid customerId, BetType betTypeId, int maxReturns, int totalOdds, int totalStake, bool inPlay)
         {
             var bet = new Bet(Guid.Empty, customerId, false, false, betTypeId, totalStake, maxReturns, totalOdds, inPlay, default);

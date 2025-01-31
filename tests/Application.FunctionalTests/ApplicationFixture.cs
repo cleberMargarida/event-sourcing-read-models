@@ -27,9 +27,13 @@ namespace Application.FunctionalTests
 
             var resourceNotificationService = app.Services.GetRequiredService<ResourceNotificationService>();
 
-            await resourceNotificationService.WaitForResourceHealthyAsync("betapi").WaitAsync(TimeSpan.FromSeconds(50));
+            await resourceNotificationService.WaitForResourceAsync("mssql").WaitAsync(TimeSpan.FromSeconds(50));
             await resourceNotificationService.WaitForResourceHealthyAsync("customerapi").WaitAsync(TimeSpan.FromSeconds(50));
             await resourceNotificationService.WaitForResourceHealthyAsync("reportapi").WaitAsync(TimeSpan.FromSeconds(50));
+
+            await BetApi.CheckHealthAsync();
+            await CustomerApi.CheckHealthAsync();
+            await ReportApi.CheckHealthAsync();
         }
 
         public async Task DisposeAsync()
