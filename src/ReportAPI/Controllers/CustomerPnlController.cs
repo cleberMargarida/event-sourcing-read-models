@@ -1,5 +1,4 @@
-﻿using CustomerAPI.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ReportAPI.Models;
 using ReportAPI.Services;
 

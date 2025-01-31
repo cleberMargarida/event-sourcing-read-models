@@ -26,7 +26,7 @@ namespace Application.FunctionalTests
             await fixture.BetApi.SettleBetAsync(id: thirdBet.Id);
 
             // Act
-            CustomerPnlReport report = await fixture.ReportApi.GetCustomerPnlReportAsync(customerId: customer.Id);
+            CustomerPnlReport report = await fixture.ReportApi.GetCustomerPnlReportAsync(customerId: customer.Id).WithDelay(1000);
 
             // Assert
             Assert.NotNull(report);

@@ -30,6 +30,7 @@ namespace Application.FunctionalTests
             await resourceNotificationService.WaitForResourceAsync("mssql").WaitAsync(TimeSpan.FromSeconds(50));
             await resourceNotificationService.WaitForResourceHealthyAsync("customerapi").WaitAsync(TimeSpan.FromSeconds(50));
             await resourceNotificationService.WaitForResourceHealthyAsync("reportapi").WaitAsync(TimeSpan.FromSeconds(50));
+            await resourceNotificationService.WaitForResourceHealthyAsync("eventstoringapi").WaitAsync(TimeSpan.FromSeconds(50));
 
             await BetApi.CheckHealthAsync();
             await CustomerApi.CheckHealthAsync();

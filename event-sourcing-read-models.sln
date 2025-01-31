@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventStoringAPI", "src\EventStoringAPI\EventStoringAPI.csproj", "{5B82269A-31E6-4BA2-A2C0-95CDF88893CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{283ACB09-1FF6-456B-9CCC-255C08CAEC90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{283ACB09-1FF6-456B-9CCC-255C08CAEC90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{283ACB09-1FF6-456B-9CCC-255C08CAEC90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B82269A-31E6-4BA2-A2C0-95CDF88893CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B82269A-31E6-4BA2-A2C0-95CDF88893CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B82269A-31E6-4BA2-A2C0-95CDF88893CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B82269A-31E6-4BA2-A2C0-95CDF88893CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{CACB2C23-B748-4EFA-922D-A8431BB3E04F} = {54C3D7EF-8C9B-40E4-8C67-AC3DF123CD18}
 		{CC4D0882-AC01-4F3A-97D4-CD421017720E} = {54C3D7EF-8C9B-40E4-8C67-AC3DF123CD18}
 		{283ACB09-1FF6-456B-9CCC-255C08CAEC90} = {9B4B848A-471A-4777-9635-D32ACAF0314C}
+		{5B82269A-31E6-4BA2-A2C0-95CDF88893CD} = {54C3D7EF-8C9B-40E4-8C67-AC3DF123CD18}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3A536EBA-9459-4493-B0FB-1AFA6C8B0F10}

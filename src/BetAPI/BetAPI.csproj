@@ -7,6 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Aspire.EventStore" Version="*" />
 		<PackageReference Include="MassTransit.RabbitMQ" Version="8.3.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.12" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="9.0.1" />
@@ -18,7 +19,7 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
 		<PackageReference Include="Scalar.AspNetCore" Version="2.0.4" />
-		<PackageReference Include="Sculptor.Core" Version="0.0.0-gcdd8340ce6" />
+		<PackageReference Include="Sculptor.Core" Version="0.0.0-g22a442af02" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="7.2.0" />
 	</ItemGroup>

@@ -25,7 +25,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Web.ServiceDefaults\Web.ServiceDefaults.csproj" />
+		<ProjectReference Include="..\BetAPI\BetAPI.csproj" />
+		<ProjectReference Include="..\CustomerAPI\CustomerAPI.csproj" />
+		<ProjectReference Include="..\ReportAPI\ReportAPI.csproj" />
+		<ProjectReference Include="..\Web.ServiceDefaults\Web.ServiceDefaults.csproj" />
 	</ItemGroup>
 
 </Project>

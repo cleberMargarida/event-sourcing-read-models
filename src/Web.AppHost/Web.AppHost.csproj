@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -13,11 +13,13 @@
     <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.0" />
     <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="8.2.2" />
     <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.2.2" />
+	<PackageReference Include="CommunityToolkit.Aspire.Hosting.EventStore" Version="*" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BetAPI\BetAPI.csproj" />
     <ProjectReference Include="..\CustomerAPI\CustomerAPI.csproj" />
+    <ProjectReference Include="..\EventStoringAPI\EventStoringAPI.csproj" />
     <ProjectReference Include="..\ReportAPI\ReportAPI.csproj" />
   </ItemGroup>
 

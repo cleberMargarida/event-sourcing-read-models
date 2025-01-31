@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
+builder.AddEventStoreClient("eventstore");
+
 builder.Services.AddDbContext<ReportContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("reportdb"), sqlServer => sqlServer.EnableRetryOnFailure()));
 
 builder.Services.AddControllers();
@@ -16,6 +18,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IReportService, ReportService>();
 
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddHostedService<ReplayDataService>();
 
 builder.Services.AddMassTransit(x =>
 {
