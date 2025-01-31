@@ -19,8 +19,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMassTransit(x =>
 {
-    x.AddConsumers(Assembly.GetExecutingAssembly());
-
+    x.AddConsumer<ReportCustomerCreatedConsumer>();
+    x.AddConsumer<ReportBetSettledConsumer>(x => x.ConcurrentMessageLimit = 1);
+    x.SetKebabCaseEndpointNameFormatter();
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(builder.Configuration.GetConnectionString("rabbitmq"));

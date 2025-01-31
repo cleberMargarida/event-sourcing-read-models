@@ -4,7 +4,7 @@ using ReportAPI.Services;
 
 namespace ReportAPI.Consumers
 {
-    public class CustomerCreatedConsumer(IReportService reportService) : IConsumer<CustomerCreatedEvent>
+    public class ReportCustomerCreatedConsumer(IReportService reportService) : IConsumer<CustomerCreatedEvent>
     {
         public async Task Consume(ConsumeContext<CustomerCreatedEvent> context)
         {

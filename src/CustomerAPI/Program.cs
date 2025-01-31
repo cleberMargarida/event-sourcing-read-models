@@ -15,6 +15,7 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 builder.Services.AddMassTransit(x => 
 {
+    x.SetKebabCaseEndpointNameFormatter();
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(builder.Configuration.GetConnectionString("rabbitmq"));
